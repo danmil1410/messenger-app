@@ -1,0 +1,19 @@
+.mat-toolbar {
+  height: 75px !important;
+}
+
+.app-container {
+  display: flex;
+  height: calc(100vh - 75px);
+  width: 100vw;
+}
+
+.users-container {
+  flex: 0 1 500px;
+  overflow: auto;
+}
+
+.options-container {
+  margin-left: auto;
+}
+

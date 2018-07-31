@@ -1,0 +1,8 @@
+<mat-toolbar>
+  <img matListAvatar alt="user-avatar" [src]="user.imagePath">
+  <span>{{user.firstName}} {{user.lastName}}</span>
+  <mat-chip-list [ngSwitch]="user.isOnline">
+    <mat-chip selected [ngStyle]="{backgroundColor: '#66BB6A'}" *ngSwitchCase="true">Online</mat-chip>
+    <mat-chip selected [ngStyle]="{backgroundColor: '#D32F2F'}" *ngSwitchCase="false">Offline</mat-chip>
+  </mat-chip-list>
+</mat-toolbar>

@@ -1,0 +1,7 @@
+<img matListAvatar [src]="activeUser.imagePath" alt="user-avatar" (click)="onOptionsClick()">
+<div *ngIf="optionsChosen" class="options">
+  <h2 class="options-user">{{ activeUser.firstName + " " + activeUser.lastName }}</h2>
+  <a class="option" (click)="openUserNameDialog()">Change user name</a>
+  <a class="option">Change user photo</a>
+  <a class="option" (click)="onLogout()">Logout</a>
+</div>

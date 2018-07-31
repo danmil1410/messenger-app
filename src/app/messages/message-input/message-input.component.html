@@ -1,0 +1,7 @@
+<mat-form-field class="text-input">
+  <input
+    matInput placeholder="Type a message..."
+    [formControl]="messageInput"
+    (keyup.enter)="onMessageSent()">
+</mat-form-field>
+<button mat-raised-button color="primary" (click)="onMessageSent(messageInput)">Send</button>

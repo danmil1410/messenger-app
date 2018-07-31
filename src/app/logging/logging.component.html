@@ -1,0 +1,22 @@
+<section class="logging">
+  <mat-card>
+    <mat-card-title>Messenger App</mat-card-title>
+    <form class="form" novalidate>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Type first name</mat-label>
+        <input matInput placeholder="First name" required [formControl]="firstNameForm">
+        <mat-error *ngIf="firstNameForm.invalid">{{getErrorFirstName()}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Type last name</mat-label>
+        <input matInput placeholder="Last name" required [formControl]="lastNameForm">
+        <mat-error *ngIf="lastNameForm.invalid">{{getErrorLastName()}}</mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit" (click)="onUserLogging()">Login</button>
+      <mat-spinner color="accent" *ngIf="isLogged" [diameter]="35"></mat-spinner>
+    </form>
+  </mat-card>
+</section>

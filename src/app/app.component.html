@@ -1,0 +1,9 @@
+<mat-toolbar *ngIf="isLogged">
+  {{ title }}
+  <app-options class="options-container" [activeUser]="activeUser"></app-options>
+</mat-toolbar>
+<section class="app-container" *ngIf="isLogged">
+  <app-users class="users-container"></app-users>
+  <router-outlet></router-outlet>
+</section>
+<router-outlet></router-outlet>

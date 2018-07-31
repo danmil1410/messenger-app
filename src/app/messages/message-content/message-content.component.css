@@ -1,0 +1,31 @@
+:host {
+  overflow: auto;
+}
+
+.messages {
+  padding: 8px 0;
+}
+
+.message {
+  margin-left: auto;
+  max-width: 300px;
+  border-radius: 20px 10px 10px 20px;
+  background: #3f51b5;
+  color: #fff;
+}
+
+.message-content {
+  overflow-wrap: break-word;
+}
+
+.message-first {
+  border-radius: 20px 20px 0 20px;
+}
+
+.message-last {
+  border-radius: 20px 0 20px 20px;
+}
+
+.message-single {
+  border-radius: 20px;
+}

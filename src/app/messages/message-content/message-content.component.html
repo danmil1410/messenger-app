@@ -1,0 +1,6 @@
+<div class="messages" *ngFor="let message of messages; let first = first; let last = last;">
+  <mat-card class="message"
+            [ngClass]="{ 'message-first': first, 'message-last': last, 'message-single': messages.length === 1 }">
+    <p class="message-content">{{ message.value }}</p>
+  </mat-card>
+</div>
