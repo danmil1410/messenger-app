@@ -1,0 +1,17 @@
+<mat-list-item [routerLink]="['/user', friend.id]" *ngFor="let friend of friends">
+
+  <img matListAvatar [src]="friend.imagePath" alt="user-avatar">
+  <span class="user-dot" [ngStyle]="{ backgroundColor: friend.isOnline === true ? '#66BB6A' : '#D32F2F' }"></span>
+
+  <p matLine>
+    <span> {{ friend.firstName }} </span>
+    <span> {{ friend.lastName }} </span>
+  </p>
+</mat-list-item>
+
+<section class="friends-starter" *ngIf="!friends.length">
+  <span class="starter-content">Right now you have no friends.
+    Invite some acquaintances and start communicating with them.
+    Just search for people in search panel and you are good to go.</span>
+  <mat-icon>sentiment_dissatisfied</mat-icon>
+</section>

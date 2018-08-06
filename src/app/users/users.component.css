@@ -2,24 +2,21 @@
   padding: 0;
 }
 
-.mat-list-avatar {
-  margin-right: 15px;
+.user-icons {
+  display: flex;
 }
 
-span {
-  color: rgba(0, 0, 0, 0.75);
-  font-size: 16px;
-  font-weight: 500;
+.user-content {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 150px);
 }
 
-.user-dot {
-  content: "";
-  position: absolute;
-  left: 44px;
-  top: 46px;
-  display: inline-block;
-  height: 10px;
-  width: 10px;
-  border-radius: 50%;
-  border: 2px solid #fff;
+.mat-button {
+  flex: 1;
+  height: 75px;
+}
+
+.active {
+  background: #f5f5f5;
 }

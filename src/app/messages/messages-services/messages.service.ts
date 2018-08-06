@@ -11,58 +11,51 @@ export class MessagesService {
 
   constructor(private usersService: UsersService) {}
 
-  usersExist(currentUserId: number, chatUserId: number) {
-    return currentUserId === this.usersService.getUserById(currentUserId).id
-      && chatUserId === this.usersService.getUserById(chatUserId).id;
+  private areUserExists(userId: number[]) {
+    return userId.every(elem => elem === this.usersService.getUserById(elem).id);
   }
 
-  usersIdentical(chat: Chat, currentUserId: number, chatUserId: number) {
-    return (chat.participantIds[0] === currentUserId
-      && chat.participantIds[1] === chatUserId) || (chat.participantIds[1] === currentUserId
-      && chat.participantIds[0] === chatUserId);
+  private areUsersInChat(chat: Chat, userId: number[]) {
+    return userId.every(elem => chat.participantIds.includes(elem));
   }
 
-  getChatByParticipants(currentUserId: number, chatUserId: number): Chat {
+  getChatByParticipants(userIds: number[]): Chat {
     // Return chat if users exist and they matches with database users
-    if (this.usersExist(currentUserId, chatUserId)) {
-      for (const chat of this.chats) {
-        if (this.usersIdentical(chat, currentUserId, chatUserId)) {
-          return chat;
-        }
+    if (this.areUserExists(userIds)) {
+      const usersChat = this.chats.find(item => this.areUsersInChat(item, userIds) === true);
+
+      if (usersChat) {
+        return usersChat;
       }
       // Create a new chat if it doesn't exist
-      const newChat = new Chat([currentUserId, chatUserId], []);
+      const newChat = new Chat(userIds, []);
       this.chats.push(newChat);
       return newChat;
     }
   }
 
-  addMessageToChat(messageValue: string, currentUserId: number, chatUserId: number) {
+  addMessageToChat(messageValue: string, userIds: number[]) {
     // Creates a new message
-    const message = new Message(currentUserId, messageValue);
+    const message = new Message(userIds[0], messageValue);
 
     // If chat exists, add new message
     if (this.chats.length) {
-      for (const chat of this.chats) {
-        if (this.usersIdentical(chat, currentUserId, chatUserId)) {
-          chat.messages.push(message);
-          return;
-        }
+      const usersChat = this.chats.find(item => this.areUsersInChat(item, userIds) === true);
+
+      if (usersChat) {
+        usersChat.messages.push(message);
+        return;
       }
     }
 
     // Create a new chat and adds new message
-    const newChat = new Chat([currentUserId, chatUserId], []);
+    const newChat = new Chat(userIds, []);
     newChat.messages.push(message);
     this.chats.push(newChat);
   }
 
   getMessages(currentChat: Chat) {
-    for (const chat of this.chats) {
-      if (chat === currentChat) {
-        return chat.messages;
-      }
-    }
+    return this.chats.find(item => item === currentChat).messages;
   }
 
 }

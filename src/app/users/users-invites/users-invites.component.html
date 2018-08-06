@@ -1,0 +1,17 @@
+<mat-list-item [routerLink]="['/user', invite.id]" *ngFor="let invite of inviteSenders" (click)="onInviteClick()">
+
+  <img matListAvatar [src]="invite.imagePath" alt="user-avatar">
+  <span class="user-dot" [ngStyle]="{ backgroundColor: invite.isOnline === true ? '#66BB6A' : '#D32F2F' }"></span>
+
+  <p matLine>
+    <span> {{ invite.firstName }} </span>
+    <span> {{ invite.lastName }} </span>
+  </p>
+</mat-list-item>
+
+<section class="invites-starter" *ngIf="!inviteSenders.length">
+  <span class="invites-content">This is the place where all your invites are placed.
+    If someone is inviting you, his invite will be shown right there.
+  Just accept the invite and start talking with each other.</span>
+  <mat-icon>sms</mat-icon>
+</section>

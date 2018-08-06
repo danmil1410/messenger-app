@@ -1,11 +1,34 @@
 <mat-nav-list class="user">
-  <mat-list-item [routerLink]="['/app/user', user.id]" *ngFor="let user of users"
-                 [ngStyle]="{ 'display': user.id !== loggedUserId ? 'flex' : 'none' }">
-    <img matListAvatar [src]="user.imagePath" alt="user-avatar">
-    <span class="user-dot" [ngStyle]="{ backgroundColor: user.isOnline === true ? '#66BB6A' : '#D32F2F' }"></span>
-    <p matLine>
-      <span> {{ user.firstName }} </span>
-      <span> {{ user.lastName }} </span>
-    </p>
-  </mat-list-item>
+  <section class="user-icons">
+    <button mat-button (click)="toggleValue(menuType.Friends)"
+            [ngClass]="{ 'active': menuActive === 0 || menuActive === undefined}">
+      <mat-icon
+        color="primary">person
+      </mat-icon>
+    </button>
+    <button
+      mat-button (click)="toggleValue(menuType.Invites)"
+      [ngClass]="{ 'active': menuActive === 1 }">
+      <mat-icon color="primary">
+        group_add
+        <mat-icon
+          *ngIf="numberOfInvites > 0"
+          [matBadge]="numberOfInvites"
+          matBadgePosition="after"
+          matBadgeColor="accent">
+        </mat-icon>
+      </mat-icon>
+    </button>
+    <button mat-button (click)="toggleValue(menuType.Search)" [ngClass]="{ 'active': menuActive === 2 }">
+      <mat-icon color="primary">search</mat-icon>
+    </button>
+  </section>
+
+  <section class="user-content" [ngSwitch]="menuTypeValue">
+    <app-users-friends *ngSwitchDefault></app-users-friends>
+    <app-users-friends *ngSwitchCase="menuType.Friends"></app-users-friends>
+    <app-users-invites *ngSwitchCase="menuType.Invites"></app-users-invites>
+    <app-users-search *ngSwitchCase="menuType.Search"></app-users-search>
+  </section>
+
 </mat-nav-list>

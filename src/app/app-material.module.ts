@@ -14,7 +14,8 @@ import {
   MatChipsModule,
   MatProgressSpinnerModule,
   MatSnackBarModule,
-  MatDialogModule
+  MatDialogModule,
+  MatBadgeModule
 } from "@angular/material";
 
 @NgModule({
@@ -33,6 +34,7 @@ import {
     MatProgressSpinnerModule,
     MatSnackBarModule,
     MatDialogModule,
+    MatBadgeModule
   ],
   exports: [
     BrowserAnimationsModule,
@@ -49,6 +51,7 @@ import {
     MatProgressSpinnerModule,
     MatSnackBarModule,
     MatDialogModule,
+    MatBadgeModule
   ]
 })
 

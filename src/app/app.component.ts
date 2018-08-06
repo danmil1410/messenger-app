@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {AuthService} from "./core/auth/auth.service";
 import {User} from "./core/user.model";
+import {Router} from "@angular/router";
 
 @Component({
   selector: "app-root",
@@ -12,7 +13,7 @@ export class AppComponent implements OnInit {
   isLogged = false;
   activeUser: User;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
     this.isLogged = this.authService.getLoggingStatus();

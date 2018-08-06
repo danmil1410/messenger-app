@@ -1,12 +1,12 @@
-<section class="logging-container">
+<section class="creating-container">
   <mat-card>
 
-    <mat-icon color="accent">chat</mat-icon>
-    <mat-card-title>Messunger</mat-card-title>
-    <h2 class="logging-description">Get to know what's going on with your friends. Instantly, without interruptions, for
-      free.</h2>
+    <mat-icon color="accent">done_all</mat-icon>
+    <mat-card-title>Create an user</mat-card-title>
+    <h2 class="creating-description">Join to Messunger to get the possibility to communicate with your friends</h2>
 
     <form class="form" novalidate [formGroup]="creatingForm">
+
       <mat-form-field appearance="outline">
         <mat-label>Type the first name</mat-label>
         <input matInput placeholder="First name" required formControlName="firstNameForm">
@@ -18,19 +18,21 @@
         <input matInput placeholder="Last name" required formControlName="lastNameForm">
         <mat-error *ngIf="creatingForm.get('lastNameForm').invalid">{{getErrorLastName()}}</mat-error>
       </mat-form-field>
-
+      
       <div class="buttons">
-        <button mat-raised-button color="primary"
-                (click)="onUserLogging(creatingForm.get('firstNameForm').value, creatingForm.get('lastNameForm').value)"
-                [disabled]="!(creatingForm.get('firstNameForm').value || creatingForm.get('lastNameForm').value)">
-          Log In
+        <button
+          mat-raised-button
+          color="accent"
+          (click)="onUserCreating(creatingForm.get('firstNameForm').value, creatingForm.get('lastNameForm').value)"
+          [disabled]="!(creatingForm.get('firstNameForm').value || creatingForm.get('lastNameForm').value)">
+          Create
         </button>
       </div>
 
     </form>
 
-    <button mat-raised-button color="accent" (click)="onUserCreationMenuClick()">
-      Sign Up
+    <button mat-raised-button color="primary" (click)="onPageReturn()">
+      Back
     </button>
 
   </mat-card>

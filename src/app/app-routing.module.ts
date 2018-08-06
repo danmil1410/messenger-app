@@ -1,23 +1,26 @@
 import {NgModule} from "@Angular/core";
 import {RouterModule, Routes} from "@angular/router";
 
-import {LoggingComponent} from "./logging/logging.component";
-import {AppComponent} from "./app.component";
 import {AuthGuard} from "./core/auth/auth.guard";
 import {MessagesComponent} from "./messages/messages.component";
+import {LoggingComponent} from "./logging/logging.component";
+import {CreatingComponent} from "./creating/creating.component";
+import {AppComponent} from "./app.component";
 
 const appRoutes: Routes = [
-  {path: "", component: LoggingComponent, pathMatch: "full"},
+  // {
+  //   path: "", component: AppComponent, canActivate: [AuthGuard], runGuardsAndResolvers: "always", children: [
+  //     {path: "user/:id", component: MessagesComponent}
+  //   ]
+  // },
   {
-    path: "app",
-    component: AppComponent,
-    canActivate: [AuthGuard],
-    children: [
+    path: "", component: AppComponent, canActivate: [AuthGuard], runGuardsAndResolvers: "always", children: [
       {path: "user/:id", component: MessagesComponent}
-    ],
-    runGuardsAndResolvers: "always",
+    ]
   },
-  {path: "**", component: AppComponent, canActivate: [AuthGuard]}
+  {path: "login", component: LoggingComponent},
+  {path: "create", component: CreatingComponent},
+  {path: "**", redirectTo: "", canActivate: [AuthGuard]}
 ];
 
 @NgModule({

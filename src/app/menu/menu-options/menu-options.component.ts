@@ -1,22 +1,26 @@
-import {Component, Input} from "@angular/core";
+import {Component, Input, OnInit} from "@angular/core";
+import {User} from "../../core/user.model";
+import {AuthService} from "../../core/auth/auth.service";
 import {Router} from "@angular/router";
-import {AuthService} from "../core/auth/auth.service";
-
 import {MatDialog} from "@angular/material";
-import {User} from "../core/user.model";
-import {OptionsUsernameComponent} from "./options-username/options-username.component";
 import {OptionsLogoutComponent} from "./options-logout/options-logout.component";
+import {OptionsUsernameComponent} from "./options-username/options-username.component";
 
 @Component({
-  selector: "app-options",
-  templateUrl: "./options.component.html",
-  styleUrls: ["./options.component.css"]
+  selector: "app-menu-options",
+  templateUrl: "./menu-options.component.html",
+  styleUrls: ["./menu-options.component.css"]
 })
-export class OptionsComponent {
+export class MenuOptionsComponent implements OnInit {
+
   optionsChosen = false;
-  @Input() activeUser: User;
+  activeUser: User;
 
   constructor(private authService: AuthService, private router: Router, private dialog: MatDialog) { }
+
+  ngOnInit() {
+    this.activeUser = this.authService.getLoggedUser();
+  }
 
   onLogout() {
     this.dialog.open(OptionsLogoutComponent, {

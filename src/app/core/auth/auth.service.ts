@@ -1,6 +1,8 @@
 import {Injectable} from "@angular/core";
 import {UsersService} from "../users.service";
 import {User} from "../user.model";
+import {Router} from "@angular/router";
+import {MatSnackBar} from "@angular/material";
 
 @Injectable({
   providedIn: "root"
@@ -9,15 +11,14 @@ export class AuthService {
   private isLogged = false;
   private userLogged: User;
 
-  constructor(private usersService: UsersService) { }
+  constructor(private usersService: UsersService, private router: Router, private snackBar: MatSnackBar) { }
 
-  isUserExists(firstName: String, lastName: String) {
-    for (const user of this.usersService.getUsers()) {
-      if (firstName === user.firstName && lastName === user.lastName) {
-        this.userLogged = user;
-        return this.isLogged = true;
-      }
+  isUserExists(firstName: string, lastName: string) {
+    if (this.usersService.isUserExists(firstName, lastName)) {
+      this.userLogged = this.usersService.isUserExists(firstName, lastName);
+      return this.isLogged = true;
     }
+
   }
 
   getLoggingStatus() {
@@ -39,5 +40,18 @@ export class AuthService {
 
   onUserLogout() {
     this.isLogged = false;
+    this.userLogged.isOnline = false;
+  }
+
+  onUserLogging(firstNameForm: string, lastNameForm: string) {
+    this.isLogged = this.isUserExists(firstNameForm, lastNameForm);
+    if (this.isLogged) {
+      this.userLogged.isOnline = true;
+      this.router.navigate(["/app"]);
+    } else if (firstNameForm && lastNameForm) {
+      this.snackBar.open("There is no such user in database!", "Dismiss", {
+        duration: 3000,
+      });
+    }
   }
 }

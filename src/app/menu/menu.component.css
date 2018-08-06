@@ -1,0 +1,14 @@
+.options-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  height: 40px;
+  width: 40px;
+}
+
+.mat-icon {
+  margin-right: 5px;
+  position: relative;
+  top: 2px;
+}

@@ -12,7 +12,7 @@ import {UsersService} from "../core/users.service";
   styleUrls: ["./messages.component.css"]
 })
 export class MessagesComponent implements OnInit {
-  currentUserId = this.authService.getLoggedUserId();
+  startingUserId = this.authService.getLoggedUserId();
   chatUserId: number;
   messages: Message[];
   user: User;
@@ -28,7 +28,8 @@ export class MessagesComponent implements OnInit {
       params => {
         this.chatUserId = +params["id"];
         this.user = this.usersService.getUserById(this.chatUserId);
-        this.messages = this.messagesService.getMessages(this.messagesService.getChatByParticipants(this.currentUserId, this.chatUserId));
+        this.messages = this.messagesService.getMessages
+        (this.messagesService.getChatByParticipants([this.startingUserId, this.chatUserId]));
       }
     );
   }

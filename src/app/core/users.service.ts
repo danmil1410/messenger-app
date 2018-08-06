@@ -1,5 +1,6 @@
 import {Injectable} from "@angular/core";
 import {User} from "./user.model";
+import {MatSnackBar} from "@angular/material";
 
 @Injectable({
   providedIn: "root"
@@ -7,35 +8,48 @@ import {User} from "./user.model";
 
 export class UsersService {
   users: User[] = [
-    {id: 1, firstName: "John", lastName: "Bridge", isOnline: false, imagePath: "https://uinames.com/api/photos/male/15.jpg"},
-    {id: 2, firstName: "Mary", lastName: "Hopkins", isOnline: false, imagePath: "https://uinames.com/api/photos/female/20.jpg"},
-    {id: 3, firstName: "James", lastName: "Watson", isOnline: true, imagePath: "https://uinames.com/api/photos/male/10.jpg"},
-    {id: 4, firstName: "Christina", lastName: "Nelson", isOnline: true, imagePath: "https://uinames.com/api/photos/female/18.jpg"},
-    {id: 5, firstName: "Ralph", lastName: "Palmer", isOnline: false, imagePath: "https://uinames.com/api/photos/male/5.jpg"},
-    {id: 6, firstName: "Kate", lastName: "Bridge", isOnline: true, imagePath: "https://uinames.com/api/photos/female/4.jpg"},
-    {id: 7, firstName: "Michael", lastName: "Hopkins", isOnline: true, imagePath: "https://uinames.com/api/photos/male/9.jpg"},
-    {id: 8, firstName: "Joanne", lastName: "Watson", isOnline: false, imagePath: "https://uinames.com/api/photos/female/5.jpg"},
-    {id: 9, firstName: "Christian", lastName: "Nelson", isOnline: true, imagePath: "https://uinames.com/api/photos/male/14.jpg"},
-    {id: 10, firstName: "Marc", lastName: "Bridge", isOnline: false, imagePath: "https://uinames.com/api/photos/male/2.jpg"},
-    {id: 11, firstName: "Paul", lastName: "Hopkins", isOnline: true, imagePath: "https://uinames.com/api/photos/male/13.jpg"},
-    {id: 12, firstName: "Nicholas", lastName: "Marshall", isOnline: false, imagePath: "https://uinames.com/api/photos/male/8.jpg"},
-    {id: 13, firstName: "Michelle", lastName: "Romero", isOnline: true, imagePath: "https://uinames.com/api/photos/female/23.jpg"},
-    {id: 14, firstName: "Bruce", lastName: "Palmer", isOnline: false, imagePath: "https://uinames.com/api/photos/male/1.jpg"},
-    {id: 15, firstName: "Donna", lastName: "Watson", isOnline: false, imagePath: "https://uinames.com/api/photos/female/8.jpg"}
+    {id: 1, firstName: "Marc", lastName: "Jacobs", isOnline: false, imagePath: "https://uinames.com/api/photos/male/3.jpg", friends: []},
+    {id: 2, firstName: "Jane", lastName: "Watson", isOnline: false, imagePath: "https://uinames.com/api/photos/female/6.jpg", friends: []},
+    {id: 3, firstName: "John", lastName: "Potter", isOnline: false, imagePath: "https://uinames.com/api/photos/male/7.jpg", friends: []},
+    {id: 4, firstName: "Kate", lastName: "Saint", isOnline: false, imagePath: "https://uinames.com/api/photos/female/5.jpg", friends: []},
+    {id: 5, firstName: "Michael", lastName: "Marsh", isOnline: false, imagePath: "https://uinames.com/api/photos/male/9.jpg", friends: []},
+    {id: 6, firstName: "Donna", lastName: "Bride", isOnline: false, imagePath: "https://uinames.com/api/photos/female/2.jpg", friends: []}
   ];
 
-  constructor() { }
+  constructor(private snackBar: MatSnackBar) { }
 
   getUsers() {
     return this.users;
   }
 
   getUserById(id: number) {
-    for (const user of this.users) {
-      if (id === user.id) {
-        return user;
-      }
-    }
+    return this.users.find(item => item.id === id);
+  }
+
+  isUserExists(firstName: string, lastName: string) {
+    return this.users.find(item => item.firstName === firstName && item.lastName === lastName);
+  }
+
+  addUser(firstName: string, lastName: string) {
+    this.users.push(new User(this.users.length + 1, firstName, lastName, "https://uinames.com/api/photos/female/8.jpg"));
+    this.snackBar.open("User has been created!", "Dismiss", {
+      duration: 3000,
+    });
+  }
+
+  addFriends(startingUserId: number, chatUserId: number) {
+    this.getUserById(startingUserId).friends.push(this.getUserById(chatUserId));
+    this.getUserById(chatUserId).friends.push(this.getUserById(startingUserId));
+  }
+
+  getFriends(user: User) {
+    return user.friends;
+  }
+
+  areUsersFriends(startingUserId: number, chatUserId: number) {
+    const startingUser = this.getUserById(startingUserId);
+    const chatUser = this.getUserById(chatUserId);
+    return startingUser.friends.includes(chatUser);
   }
 
 }

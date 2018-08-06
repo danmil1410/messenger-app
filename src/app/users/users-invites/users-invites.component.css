@@ -1,0 +1,20 @@
+.invites-starter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 75px 100px;
+  text-align: center;
+}
+
+.invites-content {
+  font-weight: 500;
+  line-height: 1.75em;
+}
+
+.mat-icon {
+  margin-top: 35px;
+  font-size: 64px;
+  height: 64px !important;
+  width: 64px !important;
+}

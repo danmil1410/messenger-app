@@ -1,6 +1,6 @@
 import {Component} from "@angular/core";
 import {MatDialogRef} from "@angular/material";
-import {AuthService} from "../../core/auth/auth.service";
+import {AuthService} from "../../../core/auth/auth.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -14,8 +14,7 @@ export class OptionsLogoutComponent {
 
   onLogout() {
     this.dialogRef.close();
-    this.router.navigate(["/"]);
+    this.router.navigate(["/login"]);
     this.authService.onUserLogout();
   }
-
 }

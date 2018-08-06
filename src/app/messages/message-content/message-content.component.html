@@ -1,6 +1,23 @@
-<div class="messages" *ngFor="let message of messages; let first = first; let last = last;">
-  <mat-card class="message"
-            [ngClass]="{ 'message-first': first, 'message-last': last, 'message-single': messages.length === 1 }">
+<div class="messages" *ngFor="let message of messages; let first = first; let last = last; let i = index;">
+
+  <p class="message-date"
+     *ngIf="checkIfShouldShowSeparator(i)">{{ message.getYearDate() }}
+  </p>
+  <p [ngClass]="{'message-date-start': message.userId === this.startingUserId,
+                 'message-date-chat': message.userId !== this.startingUserId}"
+     *ngIf="first || messages[i-1].userId !== messages[i].userId">{{
+    message.getHourDate() }}</p>
+
+  <mat-card class="message" [ngClass]="{
+            'message-single': messages.length === 1,
+            'message-start': message.userId === this.startingUserId,
+            'message-first-start': first && message.userId === this.startingUserId,
+            'message-last-start': last && message.userId === this.startingUserId,
+            'message-chat': message.userId !== this.startingUserId,
+            'message-first-chat': first && message.userId !== this.startingUserId,
+            'message-last-chat': last && message.userId !== this.startingUserId}"
+            [ngStyle]="{textAlign: message.userId === this.startingUserId ? 'right' : 'left'}">
     <p class="message-content">{{ message.value }}</p>
   </mat-card>
+
 </div>

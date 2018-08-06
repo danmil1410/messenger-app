@@ -1,5 +1,6 @@
 <app-message-title class="title-container" [user]="user"></app-message-title>
-<app-message-content class="content-container" [messages]="messages"></app-message-content>
+<app-message-content class="content-container" [messages]="messages"
+                     [startingUserId]="startingUserId"></app-message-content>
 <app-message-input class="input-container"
-                   [currentUserId]="currentUserId"
+                   [startingUserId]="startingUserId"
                    [chatUserId]="chatUserId"></app-message-input>

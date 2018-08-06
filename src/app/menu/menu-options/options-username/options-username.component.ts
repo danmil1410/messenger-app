@@ -1,7 +1,6 @@
 import {Component} from "@angular/core";
-
-import {MatDialogRef} from "@angular/material";
 import {FormControl, Validators} from "@angular/forms";
+import {MatDialogRef} from "@angular/material";
 
 @Component({
   selector: "app-options-username",
@@ -9,6 +8,7 @@ import {FormControl, Validators} from "@angular/forms";
   styleUrls: ["./options-username.component.css"]
 })
 export class OptionsUsernameComponent {
+
   firstNameForm = new FormControl("", [Validators.required]);
   lastNameForm = new FormControl("", [Validators.required]);
 

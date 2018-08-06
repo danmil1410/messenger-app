@@ -1,0 +1,24 @@
+<mat-form-field class="search-container">
+  <input
+    class="search"
+    type="search"
+    matInput placeholder="Search for an user..."
+    (keyup)="keyIsPressed($event)">
+</mat-form-field>
+
+<ng-container *ngFor="let user of users">
+  <mat-list-item
+    *ngIf="searchResult"
+    [routerLink]="['/user', user.id]"
+    [ngStyle]="{'display': isResultAndUserTheSame(user.firstName, user.lastName) ? 'flex' : 'none'}"
+    (click)="onSearchClick()">
+
+    <img matListAvatar [src]="user.imagePath" alt="user-avatar">
+    <span class="user-dot" [ngStyle]="{ backgroundColor: user.isOnline === true ? '#66BB6A' : '#D32F2F' }"></span>
+
+    <p matLine>
+      <span> {{ user.firstName }} </span>
+      <span> {{ user.lastName }} </span>
+    </p>
+  </mat-list-item>
+</ng-container>

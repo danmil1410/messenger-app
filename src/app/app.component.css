@@ -1,19 +1,14 @@
-.mat-toolbar {
-  height: 75px !important;
-}
-
-.app-container {
+.main-container {
   display: flex;
   height: calc(100vh - 75px);
   width: 100vw;
 }
 
 .users-container {
-  flex: 0 1 500px;
+  flex: 0 1 475px;
   overflow: auto;
 }
 
-.options-container {
-  margin-left: auto;
+.messages-container {
+  width: 75vw;
 }
-
