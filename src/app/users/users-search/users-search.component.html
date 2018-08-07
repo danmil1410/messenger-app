@@ -10,7 +10,8 @@
   <mat-list-item
     *ngIf="searchResult"
     [routerLink]="['/user', user.id]"
-    [ngStyle]="{'display': isResultAndUserTheSame(user.firstName, user.lastName) ? 'flex' : 'none'}"
+    [ngStyle]="{'display': isResultAndUserTheSame(user.firstName, user.lastName)
+    && !isLoggedUser(user.id) ? 'flex' : 'none'}"
     (click)="onSearchClick()">
 
     <img matListAvatar [src]="user.imagePath" alt="user-avatar">

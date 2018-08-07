@@ -22,17 +22,12 @@ export class UsersComponent implements DoCheck {
   constructor(private inviteService: InviteService, private authService: AuthService) {}
 
   ngDoCheck() {
-    this.numberOfInvites = this.inviteService.getInvites(this.authService.getLoggedUserId()).length;
+    this.numberOfInvites = this.inviteService.getUsersFromInvites(this.authService.getLoggedUserId()).length;
   }
 
   toggleValue(menuTypeValue: MenuType) {
     this.menuTypeValue = menuTypeValue;
     this.menuActive = menuTypeValue;
-    if (menuTypeValue === 1) {
-      this.inviteService.setActiveInviteStatus(true);
-    } else {
-      this.inviteService.setActiveInviteStatus(false);
-    }
   }
 
 }

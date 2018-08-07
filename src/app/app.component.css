@@ -7,6 +7,7 @@
 .users-container {
   flex: 0 1 475px;
   overflow: auto;
+  border-right: 1px solid hsl(0, 0%, 92%);
 }
 
 .messages-container {

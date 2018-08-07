@@ -1,7 +1,7 @@
 <section class="creating-container">
   <mat-card>
 
-    <mat-icon color="accent">done_all</mat-icon>
+    <mat-icon color="primary">done_all</mat-icon>
     <mat-card-title>Create an user</mat-card-title>
     <h2 class="creating-description">Join to Messunger to get the possibility to communicate with your friends</h2>
 
@@ -18,7 +18,7 @@
         <input matInput placeholder="Last name" required formControlName="lastNameForm">
         <mat-error *ngIf="creatingForm.get('lastNameForm').invalid">{{getErrorLastName()}}</mat-error>
       </mat-form-field>
-      
+
       <div class="buttons">
         <button
           mat-raised-button

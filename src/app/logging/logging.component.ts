@@ -25,8 +25,8 @@ export class LoggingComponent {
     return this.creatingForm.get("lastNameForm").hasError("required") ? "You must enter a valid last name" : "";
   }
 
-  onUserLogging(firstNameForm: string, lastNameForm: string) {
-    this.authService.onUserLogging(firstNameForm, lastNameForm);
+  login(firstNameForm: string, lastNameForm: string) {
+    this.authService.login(firstNameForm, lastNameForm);
     this.creatingForm.reset();
   }
 

@@ -11,12 +11,8 @@ export class MessagesService {
 
   constructor(private usersService: UsersService) {}
 
-  private areUserExists(userId: number[]) {
-    return userId.every(elem => elem === this.usersService.getUserById(elem).id);
-  }
-
-  private areUsersInChat(chat: Chat, userId: number[]) {
-    return userId.every(elem => chat.participantIds.includes(elem));
+  getMessages(currentChat: Chat) {
+    return this.chats.find(item => item === currentChat).messages;
   }
 
   getChatByParticipants(userIds: number[]): Chat {
@@ -54,8 +50,12 @@ export class MessagesService {
     this.chats.push(newChat);
   }
 
-  getMessages(currentChat: Chat) {
-    return this.chats.find(item => item === currentChat).messages;
+  private areUserExists(userId: number[]) {
+    return userId.every(elem => elem === this.usersService.getUserById(elem).id);
+  }
+
+  private areUsersInChat(chat: Chat, userId: number[]) {
+    return userId.every(elem => chat.participantIds.includes(elem));
   }
 
 }

@@ -1,9 +1,9 @@
 export class Invite {
   senderId: number;
-  addressId: number;
+  recipientId: number;
 
-  constructor(senderId: number, addressId: number) {
+  constructor(senderId: number, recipientId: number) {
     this.senderId = senderId;
-    this.addressId = addressId;
+    this.recipientId = recipientId;
   }
 }

@@ -1,7 +1,7 @@
 <section class="logging-container">
   <mat-card>
 
-    <mat-icon color="accent">chat</mat-icon>
+    <mat-icon color="primary">chat</mat-icon>
     <mat-card-title>Messunger</mat-card-title>
     <h2 class="logging-description">Get to know what's going on with your friends. Instantly, without interruptions, for
       free.</h2>
@@ -21,7 +21,7 @@
 
       <div class="buttons">
         <button mat-raised-button color="primary"
-                (click)="onUserLogging(creatingForm.get('firstNameForm').value, creatingForm.get('lastNameForm').value)"
+                (click)="login(creatingForm.get('firstNameForm').value, creatingForm.get('lastNameForm').value)"
                 [disabled]="!(creatingForm.get('firstNameForm').value || creatingForm.get('lastNameForm').value)">
           Log In
         </button>

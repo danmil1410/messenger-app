@@ -16,10 +16,12 @@ export class UsersInvitesComponent implements DoCheck {
     private authService: AuthService) { }
 
   ngDoCheck() {
-    this.inviteSenders = this.inviteService.getInvites(this.authService.getLoggedUserId());
+    this.inviteSenders = this.inviteService.getUsersFromInvites(this.authService.getLoggedUserId());
   }
 
   onInviteClick() {
-    this.inviteService.setActiveInviteStatus(true);
+    if (this.inviteService.getUsersFromInvites(this.authService.getLoggedUserId())) {
+      this.inviteService.setActiveInviteStatus(true);
+    }
   }
 }

@@ -9,49 +9,45 @@ import {MatSnackBar} from "@angular/material";
 })
 export class AuthService {
   private isLogged = false;
-  private userLogged: User;
+  private loggedUser: User;
 
   constructor(private usersService: UsersService, private router: Router, private snackBar: MatSnackBar) { }
-
-  isUserExists(firstName: string, lastName: string) {
-    if (this.usersService.isUserExists(firstName, lastName)) {
-      this.userLogged = this.usersService.isUserExists(firstName, lastName);
-      return this.isLogged = true;
-    }
-
-  }
 
   getLoggingStatus() {
     return this.isLogged;
   }
 
   getLoggedUser() {
-    return this.userLogged;
-  }
-
-  setLoggedUser(firstName: string, lastName: string) {
-    this.userLogged.firstName = firstName;
-    this.userLogged.lastName = lastName;
+    return this.loggedUser;
   }
 
   getLoggedUserId() {
-    return this.userLogged.id;
+    return this.loggedUser.id;
   }
 
-  onUserLogout() {
-    this.isLogged = false;
-    this.userLogged.isOnline = false;
+  setLoggedUser(firstName: string, lastName: string) {
+    this.loggedUser.firstName = firstName;
+    this.loggedUser.lastName = lastName;
   }
 
-  onUserLogging(firstNameForm: string, lastNameForm: string) {
-    this.isLogged = this.isUserExists(firstNameForm, lastNameForm);
+  login(firstNameForm: string, lastNameForm: string) {
+    this.isLogged = this.usersService.isUserExists(firstNameForm, lastNameForm);
+
     if (this.isLogged) {
-      this.userLogged.isOnline = true;
-      this.router.navigate(["/app"]);
+      this.loggedUser = this.usersService.getUserByName(firstNameForm, lastNameForm);
+      this.usersService.getUserByName(firstNameForm, lastNameForm).isOnline = true;
+      this.router.navigate(["/"]);
+
     } else if (firstNameForm && lastNameForm) {
       this.snackBar.open("There is no such user in database!", "Dismiss", {
         duration: 3000,
       });
     }
   }
+
+  onUserLogout() {
+    this.isLogged = false;
+    this.loggedUser.isOnline = false;
+  }
+
 }

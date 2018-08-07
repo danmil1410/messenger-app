@@ -1,6 +1,16 @@
 <app-message-title class="title-container" [user]="user"></app-message-title>
-<app-message-content class="content-container" [messages]="messages"
+
+<app-message-content class="content-container"
+                     *ngIf="areUsersFriends()"
+                     [messages]="messages"
                      [startingUserId]="startingUserId"></app-message-content>
+
 <app-message-input class="input-container"
+                   *ngIf="areUsersFriends()"
                    [startingUserId]="startingUserId"
                    [chatUserId]="chatUserId"></app-message-input>
+
+<app-invite class="invite-container"
+            *ngIf="!areUsersFriends()"
+            [startingUserId]="startingUserId"
+            [chatUserId]="chatUserId"></app-invite>

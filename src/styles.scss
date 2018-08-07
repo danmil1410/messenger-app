@@ -1,0 +1,146 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$primary-palette: (
+  50: #ffffff,
+  100: #cdf2f9,
+  200: #9be5f3,
+  300: #5bd4eb,
+  400: #3fcde8,
+  500: #24c6e5,
+  600: #19b4d2,
+  700: #169cb6,
+  800: #12859b,
+  900: #0f6d7f,
+  A100: #ffffff,
+  A200: #a3f0ff,
+  A400: #43dcf9,
+  A700: #35d0ed,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: white,
+    600: white,
+    700: white,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: white,
+    A400: white,
+    A700: white,
+  )
+);
+
+$accent-palette: (
+  50: #e0e9f6,
+  100: #a4bfe5,
+  200: #78a1d9,
+  300: #417ac9,
+  400: #346bb8,
+  500: #2d5da0,
+  600: #264f88,
+  700: #204170,
+  800: #193358,
+  900: #122540,
+  A100: #d0e2fc,
+  A200: #72a8f4,
+  A400: #2671da,
+  A700: #2d68ba,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: white,
+    600: white,
+    700: white,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: white,
+    A400: white,
+    A700: white,
+  )
+);
+// Define the default theme (same as the example above).
+$candy-app-primary: mat-palette($primary-palette);
+$candy-app-accent: mat-palette($accent-palette);
+$candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent);
+
+// Include the default theme styles.
+@include angular-material-theme($candy-app-theme);
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  height: 100vh;
+  width: 100vw;
+}
+
+.mat-list-item, .mat-toolbar-row, .mat-toolbar-single-row {
+  height: 75px !important;
+}
+
+.mat-list-item-content, .mat-form-field {
+  width: 100% !important;
+}
+
+.mat-dialog-content {
+  overflow: inherit !important;
+}
+
+.mat-badge {
+  right: 15px;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid hsl(0, 0%, 75%);
+  margin: 1em 0;
+  padding: 0;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-button {
+  width: 15px;
+  height: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e1e1e1;
+  border: 0 none #ffffff;
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: hsl(0, 0%, 75%);
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  border: 0 none #ffffff;
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(0, 0%, 75%);
+}
+
+::-webkit-scrollbar-track:hover, ::-webkit-scrollbar-track:active, ::-webkit-scrollbar-corner {
+  background: transparent;
+}

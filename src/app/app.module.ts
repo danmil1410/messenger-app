@@ -25,6 +25,7 @@ import {OptionsLogoutComponent} from "./menu/menu-options/options-logout/options
 import {UsersSearchComponent} from "./users/users-search/users-search.component";
 import {UsersInvitesComponent} from "./users/users-invites/users-invites.component";
 import {UsersFriendsComponent} from "./users/users-friends/users-friends.component";
+import { InviteComponent } from './messages/invite/invite.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import {UsersFriendsComponent} from "./users/users-friends/users-friends.compone
     OptionsLogoutComponent,
     UsersSearchComponent,
     UsersInvitesComponent,
-    UsersFriendsComponent
+    UsersFriendsComponent,
+    InviteComponent
   ],
   imports: [
     BrowserModule,

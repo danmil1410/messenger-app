@@ -8,11 +8,6 @@ import {CreatingComponent} from "./creating/creating.component";
 import {AppComponent} from "./app.component";
 
 const appRoutes: Routes = [
-  // {
-  //   path: "", component: AppComponent, canActivate: [AuthGuard], runGuardsAndResolvers: "always", children: [
-  //     {path: "user/:id", component: MessagesComponent}
-  //   ]
-  // },
   {
     path: "", component: AppComponent, canActivate: [AuthGuard], runGuardsAndResolvers: "always", children: [
       {path: "user/:id", component: MessagesComponent}

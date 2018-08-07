@@ -1,56 +1,34 @@
 import {Injectable} from "@angular/core";
 import {Invite} from "./invite.model";
 import {UsersService} from "./users.service";
-import {User} from "./user.model";
 import {MatSnackBar} from "@angular/material";
+import {User} from "./user.model";
 
 @Injectable({
   providedIn: "root"
 })
 export class InviteService {
   private invites: Invite[] = [];
-  private invitesActive = false;
-  private userHasToBeInvited = true;
+  private inviteIsActive = false;
 
   constructor(private usersService: UsersService, private snackBar: MatSnackBar) { }
 
-  addInvite(senderId: number, addressId: number) {
-    this.invites.push(new Invite(senderId, addressId));
+  getActiveInvite(senderId: number, recipientId: number) {
+    return this.invites.find(invite => invite.recipientId === recipientId && invite.senderId === senderId);
   }
 
-  getInvites(addressId: number) {
-    const inviteSenders: User[] = [];
-    // Searching invites array for invites matching the address id and push them to an array
-    const senders = this.invites.filter(item => item.addressId === addressId);
-
-    for (const sender of senders) {
-      inviteSenders.push(this.usersService.getUserById(sender.senderId));
-    }
-
-    return inviteSenders;
+  getActiveInviteStatus() {
+    return this.inviteIsActive;
   }
 
-  deleteInvite(addressId: number, senderId: number) {
-    const currentInvite = this.invites.find(item => item.addressId === addressId && item.senderId === senderId);
-
-    for (const invite of this.invites) {
-      if (invite === currentInvite) {
-        this.invites.splice(this.invites.indexOf(invite), 1);
-      }
-    }
+  getUsersFromInvites(recipientId: number): User[] {
+    // Searching invites array for users matching the address id
+    const senders = this.invites.filter(item => item.recipientId === recipientId);
+    return senders.map(invite => this.usersService.getUserById(invite.senderId));
   }
 
-  onInviteAccept(startingUserId: number, chatUserId: number) {
-    this.invitesActive = false;
-    this.userHasToBeInvited = false;
-    this.usersService.addFriends(startingUserId, chatUserId);
-    this.deleteInvite(startingUserId, chatUserId);
-  }
-
-  onInviteReject(startingUserId: number, chatUserId: number) {
-    this.invitesActive = false;
-    this.userHasToBeInvited = true;
-    this.deleteInvite(startingUserId, chatUserId);
+  setActiveInviteStatus(status: boolean) {
+    this.inviteIsActive = status;
   }
 
   onInviteSent(startingUserId: number, chatUserId: number) {
@@ -61,16 +39,24 @@ export class InviteService {
     });
   }
 
-  getActiveInviteStatus() {
-    return this.invitesActive;
+  onInviteAccept(startingUserId: number, chatUserId: number) {
+    this.inviteIsActive = false;
+    this.usersService.addFriends(startingUserId, chatUserId);
+    this.deleteInvite(startingUserId, chatUserId);
   }
 
-  setActiveInviteStatus(status: boolean) {
-    this.invitesActive = status;
+  onInviteReject(startingUserId: number, chatUserId: number) {
+    this.inviteIsActive = false;
+    this.deleteInvite(startingUserId, chatUserId);
   }
 
-  getUserInviteStatus() {
-    return this.userHasToBeInvited;
+  private addInvite(senderId: number, recipientId: number) {
+    this.invites.push(new Invite(senderId, recipientId));
+  }
+
+  private deleteInvite(recipientId: number, senderId: number) {
+    const inviteIndex = this.invites.findIndex(invite => invite.senderId === senderId && invite.recipientId === recipientId);
+    this.invites.splice(inviteIndex, 1);
   }
 
 }

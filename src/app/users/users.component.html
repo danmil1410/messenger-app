@@ -2,25 +2,23 @@
   <section class="user-icons">
     <button mat-button (click)="toggleValue(menuType.Friends)"
             [ngClass]="{ 'active': menuActive === 0 || menuActive === undefined}">
-      <mat-icon
-        color="primary">person
-      </mat-icon>
+      <mat-icon color="accent">person</mat-icon>
     </button>
     <button
       mat-button (click)="toggleValue(menuType.Invites)"
       [ngClass]="{ 'active': menuActive === 1 }">
-      <mat-icon color="primary">
+      <mat-icon color="accent">
         group_add
         <mat-icon
           *ngIf="numberOfInvites > 0"
           [matBadge]="numberOfInvites"
           matBadgePosition="after"
-          matBadgeColor="accent">
+          matBadgeColor="primary">
         </mat-icon>
       </mat-icon>
     </button>
     <button mat-button (click)="toggleValue(menuType.Search)" [ngClass]="{ 'active': menuActive === 2 }">
-      <mat-icon color="primary">search</mat-icon>
+      <mat-icon color="accent">search</mat-icon>
     </button>
   </section>
 

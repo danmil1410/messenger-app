@@ -2,6 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {User} from "../../core/user.model";
 import {UsersService} from "../../core/users.service";
 import {InviteService} from "../../core/invite.service";
+import {AuthService} from "../../core/auth/auth.service";
 
 @Component({
   selector: "app-users-search",
@@ -12,7 +13,7 @@ export class UsersSearchComponent implements OnInit {
   users: User[] = [];
   searchResult = "";
 
-  constructor(private usersService: UsersService, private inviteService: InviteService) { }
+  constructor(private usersService: UsersService, private inviteService: InviteService, private authService: AuthService) { }
 
   ngOnInit() {
     this.users = this.usersService.getUsers();
@@ -28,6 +29,10 @@ export class UsersSearchComponent implements OnInit {
 
   onSearchClick() {
     this.inviteService.setActiveInviteStatus(false);
+  }
+
+  isLoggedUser(userId: number) {
+    return this.authService.getLoggedUserId() === userId;
   }
 
 }
