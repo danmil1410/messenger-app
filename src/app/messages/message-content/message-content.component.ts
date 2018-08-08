@@ -13,7 +13,7 @@ export class MessageContentComponent {
   constructor() {}
 
   checkIfShouldShowSeparator(messageIndex: number) {
-    const millisecondsForSeparator = 60000;
+    const millisecondsForSeparator = 300000;
 
     if (messageIndex === 0) {
       return true;

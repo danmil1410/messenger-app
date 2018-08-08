@@ -18,3 +18,8 @@
   height: 64px !important;
   width: 64px !important;
 }
+
+.user-text {
+  font-weight: 500 !important;
+  font-size: 17px !important;
+}

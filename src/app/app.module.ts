@@ -5,7 +5,6 @@ import {BrowserModule} from "@angular/platform-browser";
 import {FormsModule} from "@angular/forms";
 
 import {AppComponent} from "./app.component";
-import {NotificationsComponent} from "./notifications/notifications.component";
 import {UsersComponent} from "./users/users.component";
 import {LoggingComponent} from "./logging/logging.component";
 import {CreatingComponent} from "./creating/creating.component";
@@ -25,13 +24,12 @@ import {OptionsLogoutComponent} from "./menu/menu-options/options-logout/options
 import {UsersSearchComponent} from "./users/users-search/users-search.component";
 import {UsersInvitesComponent} from "./users/users-invites/users-invites.component";
 import {UsersFriendsComponent} from "./users/users-friends/users-friends.component";
-import { InviteComponent } from './messages/invite/invite.component';
+import {InviteComponent} from "./messages/invite/invite.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     MessagesComponent,
-    NotificationsComponent,
     MessageInputComponent,
     MessageContentComponent,
     UsersComponent,

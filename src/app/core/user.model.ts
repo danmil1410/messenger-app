@@ -4,7 +4,7 @@ export class User {
   lastName: string;
   isOnline: boolean;
   imagePath: string;
-  friends: User[];
+  friends: number[];
 
   constructor(id: number, firstName: string, lastName: string, imagePath: string) {
     this.id = id;

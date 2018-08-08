@@ -2,7 +2,15 @@
   <section class="user-icons">
     <button mat-button (click)="toggleValue(menuType.Friends)"
             [ngClass]="{ 'active': menuActive === 0 || menuActive === undefined}">
-      <mat-icon color="accent">person</mat-icon>
+      <mat-icon color="accent">
+        person
+        <mat-icon
+          *ngIf="numberOfUnreadMessages > 0"
+          [matBadge]="numberOfUnreadMessages"
+          matBadgePosition="after"
+          matBadgeColor="primary">
+        </mat-icon>
+      </mat-icon>
     </button>
     <button
       mat-button (click)="toggleValue(menuType.Invites)"

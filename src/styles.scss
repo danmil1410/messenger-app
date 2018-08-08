@@ -86,6 +86,10 @@ body {
   width: 100vw;
 }
 
+.mat-card {
+  box-shadow: none !important;
+}
+
 .mat-list-item, .mat-toolbar-row, .mat-toolbar-single-row {
   height: 75px !important;
 }

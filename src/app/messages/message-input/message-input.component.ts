@@ -19,7 +19,7 @@ export class MessageInputComponent {
   onMessageSent() {
     if (this.messageInput.value) {
       this.messagesService.addMessageToChat(this.messageInput.value, [this.startingUserId, this.chatUserId]);
-      this.messageInput.setValue("");
+      this.messageInput.reset();
     }
   }
 

@@ -1,12 +1,14 @@
 export class Message {
-  userId: number;
+  participantIds: number[];
   value: string;
   date: Date;
+  isSeen: boolean;
 
-  constructor(userId: number, value: string) {
-    this.userId = userId;
+  constructor(participantIds: number[], value: string) {
+    this.participantIds = participantIds;
     this.value = value;
     this.date = new Date();
+    this.isSeen = false;
   }
 
   getYearDate() {

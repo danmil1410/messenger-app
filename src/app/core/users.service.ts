@@ -43,8 +43,8 @@ export class UsersService {
 
   constructor(private snackBar: MatSnackBar) { }
 
-  static getFriends(user: User) {
-    return user.friends;
+  getFriends(user: User) {
+    return this.users.filter(elem => elem.friends.includes(user.id));
   }
 
   getUserById(id: number) {
@@ -67,14 +67,14 @@ export class UsersService {
   }
 
   addFriends(startingUserId: number, chatUserId: number) {
-    this.getUserById(startingUserId).friends.push(this.getUserById(chatUserId));
-    this.getUserById(chatUserId).friends.push(this.getUserById(startingUserId));
+    this.getUserById(startingUserId).friends.push(chatUserId);
+    this.getUserById(chatUserId).friends.push(startingUserId);
   }
 
   areUsersFriends(startingUserId: number, chatUserId: number) {
     const startingUser = this.getUserById(startingUserId);
     const chatUser = this.getUserById(chatUserId);
-    return startingUser.friends.includes(chatUser);
+    return startingUser.friends.includes(chatUserId) && chatUser.friends.includes(startingUserId);
   }
 
   isUserExists(firstName: string, lastName: string): boolean {

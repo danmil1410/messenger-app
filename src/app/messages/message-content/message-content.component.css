@@ -14,7 +14,7 @@
 .message-start {
   margin-left: auto;
   border-radius: 20px 10px 10px 20px;
-  background: #3f51b5;
+  background: #24c6e5;
   color: #fff;
 }
 
@@ -23,24 +23,8 @@
   background: #f5f5f5;
 }
 
-.message-first-start {
-  border-radius: 20px 20px 0 20px;
-}
-
-.message-last-start {
-  border-radius: 20px 0 20px 20px;
-}
-
 .message-single {
   border-radius: 20px;
-}
-
-.message-first-chat {
-  border-radius: 20px 20px 20px 0;
-}
-
-.message-last-chat {
-  border-radius: 0 20px 20px 20px;
 }
 
 .message-date {

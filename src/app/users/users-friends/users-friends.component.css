@@ -18,3 +18,29 @@
   height: 64px !important;
   width: 64px !important;
 }
+
+.user-dot {
+  position: absolute;
+  left: 44px;
+  top: 46px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  height: 10px;
+  width: 10px;
+}
+
+.user-text {
+  font-weight: 500 !important;
+  font-size: 17px !important;
+}
+
+.user-avatar {
+  margin-right: 15px;
+}
+
+.friend-container {
+  display: flex;
+  align-items: center;
+  height: 75px;
+  width: 100%;
+}

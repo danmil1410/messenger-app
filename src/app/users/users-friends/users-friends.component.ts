@@ -15,7 +15,7 @@ export class UsersFriendsComponent implements OnInit {
   constructor(private usersService: UsersService, private authService: AuthService, private inviteService: InviteService) { }
 
   ngOnInit() {
-    this.friends = UsersService.getFriends(this.authService.getLoggedUser());
+    this.friends = this.usersService.getFriends(this.authService.getLoggedUser());
   }
 
   onFriendsClick() {

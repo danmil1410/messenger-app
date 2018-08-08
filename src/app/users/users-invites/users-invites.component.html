@@ -3,7 +3,7 @@
   <img matListAvatar [src]="invite.imagePath" alt="user-avatar">
   <span class="user-dot" [ngStyle]="{ backgroundColor: invite.isOnline === true ? '#66BB6A' : '#D32F2F' }"></span>
 
-  <p matLine>
+  <p matLine class="user-text">
     <span> {{ invite.firstName }} </span>
     <span> {{ invite.lastName }} </span>
   </p>
