@@ -1,4 +1,6 @@
-# MessengerApp
+# Messenger App
+
+This is an instant messaging app, Messenger look-alike. You can send invites to users, create one, have friends and search them.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
 
