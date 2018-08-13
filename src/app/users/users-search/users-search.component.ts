@@ -13,7 +13,9 @@ export class UsersSearchComponent implements OnInit {
   users: User[] = [];
   searchResult = "";
 
-  constructor(private usersService: UsersService, private inviteService: InviteService, private authService: AuthService) { }
+  constructor(private usersService: UsersService,
+              private inviteService: InviteService,
+              private authService: AuthService) { }
 
   ngOnInit() {
     this.users = this.usersService.getUsers();

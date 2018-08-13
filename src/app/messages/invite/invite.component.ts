@@ -23,8 +23,6 @@ export class InviteComponent implements DoCheck {
   areUsersInInvite() {
     if (this.activeInvite) {
       return this.startingUserId === this.activeInvite.senderId && this.chatUserId === this.activeInvite.recipientId;
-    } else {
-      return false;
     }
   }
 

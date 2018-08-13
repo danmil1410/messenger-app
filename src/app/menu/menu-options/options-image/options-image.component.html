@@ -1,3 +1,13 @@
-<p>
-  options-image works!
-</p>
+<h2 mat-dialog-title>Choose the file to upload:</h2>
+
+<mat-dialog-content>
+
+  <mat-dialog-actions>
+
+    <button type="button" mat-button color="accent" (click)="imgFileInput.click()">Add a photo</button>
+    <input type="file" accept=".jpg, .jpeg, .png" #imgFileInput hidden (change)="onAddFile($event)">
+    <button mat-button mat-dialog-close>Close</button>
+
+  </mat-dialog-actions>
+
+</mat-dialog-content>

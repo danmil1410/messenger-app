@@ -1,7 +1,6 @@
 import {Component, Input} from "@angular/core";
 import {MessagesService} from "../messages-services/messages.service";
 import {FormControl} from "@angular/forms";
-import {InviteService} from "../../core/invite.service";
 
 @Component({
   selector: "app-message-input",

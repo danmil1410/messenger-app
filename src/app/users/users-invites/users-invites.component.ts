@@ -11,9 +11,8 @@ import {User} from "../../core/user.model";
 export class UsersInvitesComponent implements DoCheck {
   inviteSenders: User[] = [];
 
-  constructor(
-    private inviteService: InviteService,
-    private authService: AuthService) { }
+  constructor(private inviteService: InviteService,
+              private authService: AuthService) { }
 
   ngDoCheck() {
     this.inviteSenders = this.inviteService.getUsersFromInvites(this.authService.getLoggedUserId());

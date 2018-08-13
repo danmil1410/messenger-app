@@ -19,12 +19,11 @@ export class MessagesComponent implements OnInit, DoCheck {
   user: User;
   areUsersFriends: boolean;
 
-  constructor(
-    private route: ActivatedRoute,
-    private authService: AuthService,
-    private messagesService: MessagesService,
-    private usersService: UsersService,
-    private messagesUnreadService: MessagesUnreadService) { }
+  constructor(private route: ActivatedRoute,
+              private authService: AuthService,
+              private messagesService: MessagesService,
+              private usersService: UsersService,
+              private messagesUnreadService: MessagesUnreadService) { }
 
   ngDoCheck() {
     this.areUsersFriends = this.usersService.areUsersFriends(this.startingUserId, this.chatUserId);

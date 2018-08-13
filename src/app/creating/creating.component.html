@@ -1,25 +1,36 @@
 <section class="creating-container">
+
   <mat-card>
 
     <mat-icon color="primary">done_all</mat-icon>
     <mat-card-title>Create an user</mat-card-title>
-    <h2 class="creating-description">Join to Messunger to get the possibility to communicate with your friends</h2>
+    <h2 class="creating-description">Join to Messenger to get the possibility to communicate with your friends</h2>
 
     <form class="form" novalidate [formGroup]="creatingForm">
+      <div class="form-image" (click)="imgFileInput.click()" [ngStyle]="{ 'background-image': 'url(' + image + ')',
+       'background-position': 'center center', 'background-size': 'cover'}">
+        <mat-icon class="image-icon" *ngIf="!isImageSet">add_photo_alternate</mat-icon>
+        <input type="file" accept=".jpg, .jpeg, .png" #imgFileInput hidden (change)="onAddFile($event)">
+      </div>
 
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="fill">
+
         <mat-label>Type the first name</mat-label>
-        <input matInput placeholder="First name" required formControlName="firstNameForm">
+        <input matInput placeholder="First name" required formControlName="firstNameForm" autocomplete="off">
         <mat-error *ngIf="creatingForm.get('firstNameForm').invalid">{{getErrorFirstName()}}</mat-error>
+
       </mat-form-field>
 
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="fill">
+
         <mat-label>Type the last name</mat-label>
-        <input matInput placeholder="Last name" required formControlName="lastNameForm">
+        <input matInput placeholder="Last name" required formControlName="lastNameForm" autocomplete="off">
         <mat-error *ngIf="creatingForm.get('lastNameForm').invalid">{{getErrorLastName()}}</mat-error>
+
       </mat-form-field>
 
       <div class="buttons">
+
         <button
           mat-raised-button
           color="accent"
@@ -27,6 +38,7 @@
           [disabled]="!(creatingForm.get('firstNameForm').value || creatingForm.get('lastNameForm').value)">
           Create
         </button>
+
       </div>
 
     </form>

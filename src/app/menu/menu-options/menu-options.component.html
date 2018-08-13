@@ -1,7 +1,22 @@
-<img matListAvatar [src]="activeUser.imagePath" alt="user-avatar" (click)="onOptionsClick()">
-<div *ngIf="optionsChosen" class="options">
-  <h2 class="options-user">{{ activeUser.firstName + " " + activeUser.lastName }}</h2>
-  <a class="option" (click)="openUserNameDialog()">Change user name</a>
-  <a class="option">Change user photo</a>
-  <a class="option" (click)="onLogout()">Logout</a>
+<img matListAvatar
+     [src]="activeUser.imagePath"
+     alt="user-avatar"
+     (click)="toggleState()">
+
+<div class="options" [@optionsState]="state">
+
+  <div class="options-image">
+    <img matListAvatar
+         [src]="activeUser.imagePath"
+         alt="user-avatar"
+         (click)="toggleState()">
+  </div>
+  
+  <div class="options-content">
+    <h2 class="options-user">{{ activeUser.firstName + " " + activeUser.lastName }}</h2>
+    <a class="option" (click)="openUserNameDialog()">Change user name</a>
+    <a class="option" (click)="openUserImageDialog()">Change user photo</a>
+    <a class="option" (click)="openUserLogoutDialog()">Logout</a>
+  </div>
+
 </div>

@@ -16,6 +16,7 @@
 .mat-button {
   flex: 1;
   height: 75px;
+  transition: .2s ease-in-out;
 }
 
 .active {

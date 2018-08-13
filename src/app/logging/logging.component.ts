@@ -9,7 +9,6 @@ import {Router} from "@angular/router";
   styleUrls: ["./logging.component.css"]
 })
 export class LoggingComponent {
-
   creatingForm = new FormGroup({
     firstNameForm: new FormControl("", [Validators.required]),
     lastNameForm: new FormControl("", [Validators.required])
@@ -18,11 +17,11 @@ export class LoggingComponent {
   constructor(private authService: AuthService, private router: Router) { }
 
   getErrorFirstName() {
-    return this.creatingForm.get("firstNameForm").hasError("required") ? "You must enter a valid first name" : "";
+    return this.creatingForm.get("firstNameForm").hasError("required") ? "" : "";
   }
 
   getErrorLastName() {
-    return this.creatingForm.get("lastNameForm").hasError("required") ? "You must enter a valid last name" : "";
+    return this.creatingForm.get("lastNameForm").hasError("required") ? "" : "";
   }
 
   login(firstNameForm: string, lastNameForm: string) {

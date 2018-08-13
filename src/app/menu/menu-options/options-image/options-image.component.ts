@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from "@angular/core";
+import {ImageService} from "../../../core/image.service";
 
 @Component({
-  selector: 'app-options-image',
-  templateUrl: './options-image.component.html',
-  styleUrls: ['./options-image.component.css']
+  selector: "app-options-image",
+  templateUrl: "./options-image.component.html",
+  styleUrls: ["./options-image.component.css"]
 })
-export class OptionsImageComponent implements OnInit {
+export class OptionsImageComponent {
 
-  constructor() { }
+  constructor(private imageService: ImageService) { }
 
-  ngOnInit() {
+  onAddFile(event: any) {
+    this.imageService.onAddFile(event);
   }
 
 }

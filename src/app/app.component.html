@@ -1,6 +1,9 @@
 <router-outlet></router-outlet>
+
 <app-menu class="menu-container" *ngIf="isLogged"></app-menu>
 <section class="main-container" *ngIf="isLogged">
+
   <app-users class="users-container"></app-users>
   <router-outlet></router-outlet>
+
 </section>

@@ -1,7 +1,10 @@
 <mat-nav-list class="user">
+
   <section class="user-icons">
+
     <button mat-button (click)="toggleValue(menuType.Friends)"
             [ngClass]="{ 'active': menuActive === 0 || menuActive === undefined}">
+
       <mat-icon color="accent">
         person
         <mat-icon
@@ -11,10 +14,13 @@
           matBadgeColor="primary">
         </mat-icon>
       </mat-icon>
+
     </button>
+
     <button
       mat-button (click)="toggleValue(menuType.Invites)"
       [ngClass]="{ 'active': menuActive === 1 }">
+
       <mat-icon color="accent">
         group_add
         <mat-icon
@@ -24,10 +30,13 @@
           matBadgeColor="primary">
         </mat-icon>
       </mat-icon>
+
     </button>
+
     <button mat-button (click)="toggleValue(menuType.Search)" [ngClass]="{ 'active': menuActive === 2 }">
       <mat-icon color="accent">search</mat-icon>
     </button>
+
   </section>
 
   <section class="user-content" [ngSwitch]="menuTypeValue">

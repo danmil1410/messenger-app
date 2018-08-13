@@ -1,5 +1,7 @@
-:host {
-  overflow: auto;
+.messages-container {
+  padding: 20px 5%;
+  overflow: scroll;
+  height: calc(100vh - 275px)
 }
 
 .messages {
@@ -13,18 +15,41 @@
 
 .message-start {
   margin-left: auto;
-  border-radius: 20px 10px 10px 20px;
+  border-radius: 20px 10px 0 20px;
   background: #24c6e5;
   color: #fff;
 }
 
-.message-chat {
-  border-radius: 10px 20px 20px 10px;
-  background: #f5f5f5;
+.message-start::after{
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: -10px;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 10px 0 0 10px;
+  border-color: transparent transparent transparent #24c5e5;
 }
 
-.message-single {
-  border-radius: 20px;
+.message-chat {
+  border-radius: 0 20px 20px 10px;
+  background: #ededed;
+}
+
+.message-chat::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0px;
+  left: -10px;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 10px 10px 0;
+  border-color: transparent #ededed transparent transparent;
 }
 
 .message-date {

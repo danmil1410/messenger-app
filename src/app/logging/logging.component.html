@@ -1,4 +1,5 @@
 <section class="logging-container">
+
   <mat-card>
 
     <mat-icon color="primary">chat</mat-icon>
@@ -7,24 +8,31 @@
       free.</h2>
 
     <form class="form" novalidate [formGroup]="creatingForm">
-      <mat-form-field appearance="outline">
+
+      <mat-form-field appearance="fill">
+
         <mat-label>Type the first name</mat-label>
-        <input matInput placeholder="First name" required formControlName="firstNameForm">
+        <input matInput placeholder="First name" required formControlName="firstNameForm" autocomplete="off">
         <mat-error *ngIf="creatingForm.get('firstNameForm').invalid">{{getErrorFirstName()}}</mat-error>
+
       </mat-form-field>
 
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="fill">
+
         <mat-label>Type the last name</mat-label>
-        <input matInput placeholder="Last name" required formControlName="lastNameForm">
+        <input matInput placeholder="Last name" required formControlName="lastNameForm" autocomplete="off">
         <mat-error *ngIf="creatingForm.get('lastNameForm').invalid">{{getErrorLastName()}}</mat-error>
+
       </mat-form-field>
 
       <div class="buttons">
+
         <button mat-raised-button color="primary"
                 (click)="login(creatingForm.get('firstNameForm').value, creatingForm.get('lastNameForm').value)"
                 [disabled]="!(creatingForm.get('firstNameForm').value || creatingForm.get('lastNameForm').value)">
           Log In
         </button>
+
       </div>
 
     </form>
@@ -34,4 +42,5 @@
     </button>
 
   </mat-card>
+
 </section>

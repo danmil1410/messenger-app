@@ -1,5 +1,21 @@
 .text-input {
   flex: 1;
-  margin-right: 25px;
   padding: 0;
+}
+
+.text {
+  height: 34.5px;
+}
+
+.input-button {
+  position: absolute;
+  right: 16px;
+  line-height: 40px;
+  width: 40px;
+  height: 40px;
+}
+
+.mat-icon {
+  font-size: 20px;
+  line-height: 10px;
 }

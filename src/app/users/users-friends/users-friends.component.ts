@@ -12,7 +12,9 @@ import {InviteService} from "../../core/invite.service";
 export class UsersFriendsComponent implements OnInit {
   friends: User[] = [];
 
-  constructor(private usersService: UsersService, private authService: AuthService, private inviteService: InviteService) { }
+  constructor(private usersService: UsersService,
+              private authService: AuthService,
+              private inviteService: InviteService) { }
 
   ngOnInit() {
     this.friends = this.usersService.getFriends(this.authService.getLoggedUser());

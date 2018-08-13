@@ -1,27 +1,38 @@
 <h2 mat-dialog-title>Change your name</h2>
 
 <mat-dialog-content>
+
   <form novalidate (ngSubmit)="onSubmit(firstNameForm, lastNameForm)">
+
     <mat-form-field appearance="outline">
+
       <mat-label>Type first name</mat-label>
       <input matInput placeholder="First name" required [formControl]="firstNameForm">
       <mat-error *ngIf="firstNameForm.invalid">{{getErrorFirstName()}}</mat-error>
+
     </mat-form-field>
 
     <mat-form-field appearance="outline">
+
       <mat-label>Type last name</mat-label>
       <input matInput placeholder="Last name" required [formControl]="lastNameForm">
       <mat-error *ngIf="lastNameForm.invalid">{{getErrorLastName()}}</mat-error>
+
     </mat-form-field>
 
     <mat-dialog-actions>
+
       <button
         mat-raised-button
         color="primary"
         type="submit"
         [disabled]="!(firstNameForm.value || lastNameForm.value)">Change name
       </button>
+
       <button mat-button mat-dialog-close>Close</button>
+
     </mat-dialog-actions>
+
   </form>
+
 </mat-dialog-content>

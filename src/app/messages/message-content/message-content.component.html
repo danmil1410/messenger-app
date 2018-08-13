@@ -1,20 +1,28 @@
-<div class="messages" *ngFor="let message of messages; let first = first; let last = last; let i = index;">
+<div class="messages-container" #msgContainer>
 
-  <p class="message-date"
-     *ngIf="checkIfShouldShowSeparator(i)">{{ message.getYearDate() }}
-  </p>
-  <p [ngClass]="{'message-date-start': message.participantIds[0] === this.startingUserId,
+  <div class="messages" *ngFor="let message of messages; let first = first; let last = last; let i = index;">
+
+    <p class="message-date"
+       *ngIf="checkIfShouldShowSeparator(i)">{{ message.getYearDate() }}
+    </p>
+
+    <p [ngClass]="{'message-date-start': message.participantIds[0] === this.startingUserId,
                  'message-date-chat': message.participantIds[0] !== this.startingUserId}"
-     *ngIf="first || messages[i-1].participantIds[0] !== messages[i].participantIds[0] ||
+       *ngIf="first || messages[i-1].participantIds[0] !== messages[i].participantIds[0] ||
      messages[i-1].participantIds[1] !== messages[i].participantIds[1]">
-    {{ message.getHourDate() }}</p>
+      {{ message.getHourDate() }}
+    </p>
 
-  <mat-card class="message" [ngClass]="{
-            'message-single': messages.length === 1,
+    <mat-card
+      class="message" [ngClass]="{
             'message-start': message.participantIds[0] === this.startingUserId,
             'message-chat': message.participantIds[0] !== this.startingUserId}"
-            [ngStyle]="{textAlign: message.participantIds[0] === this.startingUserId ? 'right' : 'left'}">
-    <p class="message-content">{{ message.value }}</p>
-  </mat-card>
+      [ngStyle]="{textAlign: message.participantIds[0] === this.startingUserId ? 'right' : 'left'}">
+
+      <p class="message-content">{{ message.value }}</p>
+
+    </mat-card>
+
+  </div>
 
 </div>

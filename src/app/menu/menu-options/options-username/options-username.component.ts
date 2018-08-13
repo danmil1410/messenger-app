@@ -8,7 +8,6 @@ import {MatDialogRef} from "@angular/material";
   styleUrls: ["./options-username.component.css"]
 })
 export class OptionsUsernameComponent {
-
   firstNameForm = new FormControl("", [Validators.required]);
   lastNameForm = new FormControl("", [Validators.required]);
 

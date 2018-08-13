@@ -1,20 +1,30 @@
 <section class="invites" *ngIf="!inviteIsActive">
+
   <span class="invites-content" [ngStyle]="{'color': areUsersInInvite() ? '#737373' : '#000'}">This person is probably waiting for your messages.
-  To communicate with each other invite this person to your friends group. As soon as this person accepts your invite
-  you will be able to send messages. Be sure you are inviting right person - do not spam!</span>
+    To communicate with each other invite this person to your friends group. As soon as this person accepts your invite
+    you will be able to send messages. Be sure you are inviting right person - do not spam!
+  </span>
+
   <button
     mat-raised-button color="primary"
     (click)="onInviteSent()"
     [disabled]="areUsersInInvite()">Invite
   </button>
+
 </section>
 
 <section class="invites" *ngIf="inviteIsActive">
+
   <span class="invites-content">This user sent you an invite. If you accept this, you will be able to send messages to him.
     If you reject, the invite will disappear, but you will be able to invite this person again as same as this person
-    will be able to invite you. Click to accept or reject it:</span>
+    will be able to invite you. Click to accept or reject it:
+  </span>
+
   <div class="buttons">
+
     <button class="accept-button" mat-raised-button color="primary" (click)="onInviteAccept()">Accept</button>
     <button mat-raised-button color="accent" (click)="onInviteReject()">Reject</button>
+
   </div>
+
 </section>

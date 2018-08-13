@@ -1,0 +1,7 @@
+.mat-raised-button:nth-child(1) {
+  margin-right: 25px;
+}
+
+.mat-button {
+  margin: 0 !important;
+}

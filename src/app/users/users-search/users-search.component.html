@@ -1,9 +1,10 @@
-<mat-form-field class="search-container">
+<mat-form-field class="search-container" appearance="fill">
   <input
     class="search"
     type="search"
     matInput placeholder="Search for an user..."
-    (keyup)="keyIsPressed($event)">
+    (keyup)="keyIsPressed($event)"
+    autocomplete="off">
 </mat-form-field>
 
 <ng-container *ngFor="let user of users">

@@ -1,8 +1,11 @@
-<mat-form-field class="text-input">
-  <input type="text" matInput placeholder="Type a message..." [formControl]="messageInput"
-         (keyup.enter)="onMessageSent()">
+<mat-form-field class="text-input" appearance="fill">
+
+  <input class="text" type="text" matInput placeholder="Type a message..." [formControl]="messageInput"
+         (keyup.enter)="onMessageSent()" autocomplete="off">
+
 </mat-form-field>
 
-<button mat-raised-button color="primary"
-        (click)="onMessageSent(messageInput)">Send
+<button class="input-button" mat-fab  color="primary"
+        (click)="onMessageSent(messageInput)">
+  <mat-icon>send</mat-icon>
 </button>

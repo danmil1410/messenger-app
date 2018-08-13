@@ -33,7 +33,7 @@ export class MessagesService {
     }
   }
 
-  addMessageToChat(messageValue: string, userIds: number[]) {
+  addMessageToChat(messageValue: string, userIds: number[]): void {
     // Creates a new message
     const message = new Message(userIds, messageValue);
     // If chat exists, add new message
